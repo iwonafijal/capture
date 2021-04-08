@@ -1,9 +1,10 @@
 // Animations
 import { motion } from "framer-motion";
-import { pageAnimation, titleAnim } from "../animation";
+import { pageAnimation, titleAnim, fade } from "../animation";
 import styled from "styled-components";
 import ScrollTop from "../components/ScrollTop";
 import ContactIcons from "../components/ContactIcons";
+import Toggle from "../components/Toggle";
 
 const ContactUs = () => {
   return (
@@ -23,30 +24,32 @@ const ContactUs = () => {
       </Title>
       <div>
         <Hide>
-          <Social variants={titleAnim}>
-            <h2>Send Us a Message</h2>
-
-            <div className="contact">
-              <textarea placeholder="write here..."></textarea>
-            </div>
-            <button>Send</button>
-
-            <div className="contact-line"></div>
-          </Social>
+          <Toggle title="Send Us a Message" isContentDisabled={true}>
+            <Social variants={fade}>
+              <div className="contact">
+                <textarea placeholder="write here..."></textarea>
+              </div>
+              <button>Send</button>
+            </Social>
+          </Toggle>
+          <div className="contact-line"></div>
         </Hide>
+
         {/* <Hide>
           <Social variants={titleAnim}>
             <h2>Send an Email</h2>
             <div className="contact-line"></div>
           </Social>
         </Hide> */}
+
         <Hide>
-          <Social variants={titleAnim}>
-            <h2>Social Media</h2>
-            <ContactIcons />
-            <div className="contact-line"></div>
-          </Social>
+          <Toggle title="Social Media" isContentDisabled={true}>
+            <Social variants={fade}>
+              <ContactIcons />
+            </Social>
+          </Toggle>
         </Hide>
+        <div className="contact-line"></div>
       </div>
       <ScrollTop />
     </ContactStyle>
@@ -61,6 +64,11 @@ const ContactStyle = styled(motion.div)`
   .contact {
     width: 100%;
     max-width: 400px;
+  }
+
+  .question {
+    padding: 3rem 0rem;
+    cursor: pointer;
   }
 
   textarea {
