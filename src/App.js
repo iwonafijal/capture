@@ -23,16 +23,16 @@ function App() {
       <Nav />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
-          <Route path={process.env.PUBLIC_URL + "/"} exact>
+          <Route path="/" exact>
             <AboutUs />
           </Route>
-          <Route path={process.env.PUBLIC_URL + "/work"} exact>
+          <Route path="/work" exact>
             <OurWork />
           </Route>
-          <Route path={process.env.PUBLIC_URL + "/work/:id"}>
+          <Route path="/work/:id">
             <MovieDetail />
           </Route>
-          <Route path={process.env.PUBLIC_URL + "/contact"}>
+          <Route path="/contact">
             <ContactUs />
           </Route>
         </Switch>
